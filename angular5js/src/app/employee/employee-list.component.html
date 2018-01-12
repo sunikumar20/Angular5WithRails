@@ -1,0 +1,32 @@
+<!-- <a (click)="createEmployee()" ng-href="#" >New Employee</a> -->
+<button type="button" (click)="createEmployee()">New Employee</button>
+<employee *ngIf='showEmployee' [employee]='showEmployee' (newEmployee)='changesInEmployee($event);'></employee>
+
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel *ngFor="let item of employees">
+    <ng-template ngbPanelTitle>
+      <span>{{ item.firstname }}</span>  
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <div id="dataList">
+          <div class="row">
+              <div class="col-md-10">
+                  <span>{{ item.firstname }}</span>
+              </div>
+              <div class="col-md-2">
+                <button href="#" class="btn btn-primary btn-sm" (click)="goToShow(item)" ng-mouseover="showEditRow(row)">
+                  <span>Edit</span>
+                </button>
+                <button href="#" class="btn btn-primary btn-sm" (click)="deleteEmployee(item)" ng-mouseover="showEditRow(row)">
+                    <span>Delete</span>
+                  </button>
+              </div>
+            </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+
+<div class="container"> 
+  
+</div><!--/container-->

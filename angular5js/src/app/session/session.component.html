@@ -1,0 +1,33 @@
+<!-- <li class="nav-item">
+  <a class="nav-link" href="#" (click)="signUp()">Sign Up</a>
+</li> -->
+<div  class="was-validated" *ngIf='isLoggedOut()'>
+  <form [formGroup]="regForm" novalidate (ngSubmit)="submitForm()">
+    <div class="row justify-content-center">
+      <div class="form-group col-6">
+        <label class="col-12 col-form-label" for="email">Email</label>
+        <input type="email" placeholder="Email address" class="form-control form-control-lg col-12" id="email" [formControl]="regForm.controls['email']"
+          required>
+        <div class="invalid-feedback">
+          Please provide a valid email.
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="form-group col-6">
+        <label class="col-12 col-form-label" for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" class="form-control form-control-lg col-12" [formControl]="regForm.controls['password']" required>
+        <div class="invalid-feedback">
+          Please provide a password.
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="form-group col-6">
+        <button type="submit" class="btn btn-outline-secondary btn-block col-12">Sign in</button>
+      </div>
+    </div>
+  </form>
+</div>

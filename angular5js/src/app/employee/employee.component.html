@@ -1,0 +1,32 @@
+<!-- <p>
+  employee works!
+</p>
+<form (ngSubmit)="onSubmit()" #employee>
+  <div class="form-group">
+    <label for='firstname'>First name: </label>
+    <input type='text' class="form-control" id='firstname' required [(ngModel)]="model.firstname" name='firstname' #firstname="ngModel" [ngModelOptions]="{ updateOn : change }">
+  </div>
+  <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
+    First Name Required
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<div>{{model.firstname}}</div>
+ -->
+<div *ngIf='employee'>
+  <h3>{{title}}</h3>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit();">
+    <div class="form-group">
+      <label >First name: </label>
+      <input type='text' class="form-control" [formControl]="employeeForm.controls.firstname">
+    </div>
+    <div class="" *ngIf="!employeeForm.controls.firstname.valid && employeeForm.controls.firstname.touched">
+      <div *ngIf="employeeForm.controls.firstname.hasError('required')"  class="alert alert-danger">Name is required.</div>
+    </div>
+    <!-- <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
+      First Name Required
+    </div> -->
+    <button type="submit" class="btn btn-success" >Submit</button>
+  </form>
+  <div *ngIf='employeeForm.value.firstname'> hii {{ employeeForm.value.firstname }}</div>
+</div>
