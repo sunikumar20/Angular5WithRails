@@ -16,7 +16,8 @@ import { Employee } from './employee/employee';
 import { AboutComponent } from './about/about.component';
 import { SessionComponent } from './session/session.component';
 import { AuthenticationService } from './authentication.service';
-import { HomeComponent } from './home/home.component'; 
+import { HomeComponent } from './home/home.component';
+import { CustomDirective } from './custom.directive'; 
 
 
 const appRoutes: Routes = [
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     EmployeeListComponent,
     AboutComponent,
     SessionComponent,
-    HomeComponent
+    HomeComponent,
+    CustomDirective
   ],
   imports: [
     NgbModule.forRoot(),
