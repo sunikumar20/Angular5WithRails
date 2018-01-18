@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ViewChild  } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
@@ -14,6 +14,8 @@ import { log } from 'util';
 })
 
 export class EmployeeComponent implements OnInit, OnChanges {
+  empImageFile: File;
+  @ViewChild('empImage') Emp_Image;
   @Input() employee: Employee;
   @Output() newEmployee: EventEmitter<Employee> = new EventEmitter();
   title: string;
@@ -31,6 +33,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
       this.employeeForm = this.formBuilder.group({
         id: [this.employee.id],
         firstname: [this.employee.firstname, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10)])],
+        image: [this.employee.image, Validators.compose([Validators.required])],
       })    
     }
   }
@@ -38,19 +41,20 @@ export class EmployeeComponent implements OnInit, OnChanges {
   ngOnInit() { }
 
   public onSubmit() { 
-    let isFormValid = this.employeeForm.valid;
-    if(isFormValid){
-      if(this.employee.id){
-        this.apiService.updateEmployee(<Employee>this.employeeForm.value).subscribe((employee: Employee) => {
-          this.newEmployee.emit(employee);
-          this.employeeForm.reset();
-        })
-      }else{
-        this.apiService.createEmployee(<Employee>this.employeeForm.value).subscribe((employee: Employee) => {
-          this.newEmployee.emit(employee);
-          this.employeeForm.reset();
-        })
-      }
-    } 
+    console.log(this.Emp_Image)
+    // let isFormValid = this.employeeForm.valid;
+    // if(isFormValid){
+    //   if(this.employee.id){
+    //     this.apiService.updateEmployee(<Employee>this.employeeForm.value).subscribe((employee: Employee) => {
+    //       this.newEmployee.emit(employee);
+    //       this.employeeForm.reset();
+    //     })
+    //   }else{
+    //     this.apiService.createEmployee(<Employee>this.employeeForm.value).subscribe((employee: Employee) => {
+    //       this.newEmployee.emit(employee);
+    //       this.employeeForm.reset();
+    //     })
+    //   }
+    // } 
   }
 }

@@ -26,6 +26,10 @@
     <!-- <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
       First Name Required
     </div> -->
+    <div class="form-group">
+      <label >Image: </label>
+      <input type='file' class="form-control" [formControl]="employeeForm.controls.image" #empImage>
+    </div>
     <button type="submit" class="btn btn-success" >Submit</button>
   </form>
   <div *ngIf='employeeForm.value.firstname'> hii {{ employeeForm.value.firstname }}</div>
